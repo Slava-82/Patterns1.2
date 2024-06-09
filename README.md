@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/qx3agjonhocqn7nt?svg=true)](https://ci.appveyor.com/project/Slava-82/patterns)
