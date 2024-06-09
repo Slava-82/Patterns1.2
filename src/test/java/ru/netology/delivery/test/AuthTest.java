@@ -1,4 +1,5 @@
 package ru.netology.delivery.test;
+
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
@@ -21,24 +22,24 @@ import static ru.netology.delivery.data.DataGenerator.getRandomPassword;
 
 // спецификация нужна для того, чтобы переиспользовать настройки в разных запросах
 class AuthTest {
-@BeforeEach
+    @BeforeEach
     void setup() {
-    open("http://localhost:9999");
-}
+        open("http://localhost:9999");
+    }
 
-@Test
+    @Test
     @DisplayName("Should successfully login with active registered user")
-void shouldSuccessfulLoginIfRegisteredActiveUser() {
-    var registeredUser = getRegisteredUser("active");
+    void shouldSuccessfulLoginIfRegisteredActiveUser() {
+        var registeredUser = getRegisteredUser("active");
 
-    $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
-    $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
-    $(".button").click();
-    $("[id = 'root'] .heading")
-            .shouldBe(visible)
-            .shouldBe(exactText("Личный кабинет"));
+        $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
+        $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
+        $(".button").click();
+        $("[id = 'root'] .heading")
+                .shouldBe(visible)
+                .shouldBe(exactText("Личный кабинет"));
 
-}
+    }
 
     @Test
     @DisplayName("Should get error message if login with not registered user")
